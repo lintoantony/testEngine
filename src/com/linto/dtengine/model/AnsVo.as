@@ -1,0 +1,1 @@
+﻿package com.linto.dtengine.model{	public class AnsVo{		public var correctAnsIndx:Number = -1;		public var userSelection:Number = -1;					public function CustMc():void{		}	}}

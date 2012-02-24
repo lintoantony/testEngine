@@ -1,0 +1,1 @@
+﻿package com.linto.utils{	import flash.display.MovieClip;		public class AnsVo extends MovieClip{		public var index:int;					public function AnsVo(){		}	}}

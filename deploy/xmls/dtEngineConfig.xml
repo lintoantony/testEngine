@@ -1,0 +1,77 @@
+<?xml version="1.0" standalone="yes"?>
+<config>
+	<appHeading><![CDATA[Singapore Driving Theory Tests (BTT/FTT/RTT)]]></appHeading>
+    <userOptions>
+        <option type="courseType">
+            <label><![CDATA[Theory Test:]]></label>
+            <choices>
+                <item id="1"><![CDATA[Basic Theory Test (BTT)]]></item>
+                <item id="2"><![CDATA[Final Theory Test (FTT)]]></item>
+                <item id="3"><![CDATA[Riding Theory Test (RTT)]]></item>
+            </choices>
+        </option>
+        <option type="testMode">
+            <label><![CDATA[Test Type/Mode:]]></label>
+            <choices>
+                <item id="1"><![CDATA[Practice]]></item>
+                <item id="2"><![CDATA[Test (Simulated)]]></item>
+            </choices>
+        </option>
+        <option type="noOfQuestions">
+            <label><![CDATA[No. of Questions:]]></label>
+            <choices>
+                <item id="1"><![CDATA[10 Questions]]></item>
+                <item id="2"><![CDATA[20 Questions]]></item>
+                <item id="3"><![CDATA[30 Questions]]></item>
+                <item id="4"><![CDATA[40 Questions]]></item>
+            </choices>
+        </option>
+        <option type="language">
+            <label><![CDATA[Language:]]></label>
+            <choices>
+                <item id="1"><![CDATA[English]]></item>
+                <item id="2"><![CDATA[Tamil]]></item>
+            </choices>
+        </option>
+    </userOptions>
+    <labelTexts>
+        <label type="copyright"><![CDATA[Copyrights SGDriveTest @ 2011]]></label>
+        <label type="instruction"><![CDATA[Percentage of Pass Mark is 90%, Good Luck!]]></label>
+        <label type="start"><![CDATA[START]]></label>
+        <label type="prev"><![CDATA[Previous]]></label>
+        <label type="next"><![CDATA[Next]]></label>
+        <label type="finish"><![CDATA[Finish]]></label>
+        <label type="bug"><![CDATA[Report Bugs]]></label>
+        <label type="reviewQuestion"><![CDATA[Review Question]]></label>
+        <label type="startAgain"><![CDATA[Start Again]]></label>
+        <label type="review"><![CDATA[Review]]></label>
+        <label type="page"><![CDATA[Page]]></label>
+        <label type="summaryBut"><![CDATA[summary]]></label>
+        <label type="tryAgain"><![CDATA[Try Again]]></label>
+        <label type="summary"><![CDATA[Driving Test Summary]]></label>
+        <label type="ptd"><![CDATA[Practice Test Drive]]></label>
+        <label type="score"><![CDATA[Your Score]]></label>
+        <label type="timeText"><![CDATA[You have done this practice in]]></label>
+        <label type="percentage"><![CDATA[Percentage of Marks]]></label>
+        <label type="result"><![CDATA[FINAL TEST RESULT]]></label>
+        <label type="reviewLabel"><![CDATA[Review your answers]]></label>
+        <label type="pass"><![CDATA[PASS]]></label>
+        <label type="fail"><![CDATA[FAIL]]></label>
+        <label type="select"><![CDATA[Select the best answer]]></label>
+        <label type="selected"><![CDATA[You selected this answer]]></label>
+    </labelTexts>
+    <terms>
+        <label><![CDATA[Terms and Conditions:]]></label>
+        <list>
+            <item><![CDATA[1. Questions are picked up randomly.]]></item>
+            <item><![CDATA[2. Test Results will be shown immediately at the end.]]></item>
+            <item><![CDATA[3. Once the time limit reached, you couldn't able to continue. It will bring you the summary page in the Test Simulated mode.]]></item>
+            <item><![CDATA[4. You can go back by clicking the previous button to change the answer at any point.]]></item>
+            <item><![CDATA[5. In case of any Difficulties/Errors Pls mail us.]]></item>
+            <item><![CDATA[6. This is not an actual test conducted by Traffic Police (mockup test).]]></item>
+        </list>
+    </terms>
+    <serverApi><![CDATA[xmls/questionsList.xml]]></serverApi>
+</config>
+
+

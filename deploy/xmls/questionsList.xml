@@ -1,0 +1,449 @@
+<?xml version="1.0"?>
+<questionList>
+  <item>
+    <question><![CDATA[Road signs and signals are meant mainly for :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_8.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[motorists.]]></opt>
+        <opt indx="2"><![CDATA[bicyclists.]]></opt>
+        <opt indx="3"><![CDATA[pedestrians.]]></opt>
+        <opt indx="4"><![CDATA[pedestrians.]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[Seeing this sign means you have to :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_8.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[turn left ahead.]]></opt>
+        <opt indx="2"><![CDATA[change to left lane]]></opt>
+        <opt indx="3"><![CDATA[keep left.]]></opt>
+    </choises>
+    <ansIndx>1</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[What does this sign mean?]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img3_10.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[Two-way traffic. Beware of oncoming traffic.]]></opt>
+        <opt indx="2"><![CDATA[Split traffic. Vehicles may pass on either side.]]></opt>
+        <opt indx="3"><![CDATA[Merging traffic. Get ready to turn either right or left.]]></opt>
+    </choises>
+    <ansIndx>2</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[This sign indicates :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_19.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[no entry for vehicles with height exceeding 2.3 metres.]]></opt>
+        <opt indx="2"><![CDATA[no entry for vehicles with width exceeding 2.3 metres.]]></opt>
+        <opt indx="3"><![CDATA[no entry for vehicles with length exceeding 2.3 metres.]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[This sign indicates]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_20.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[no entry for vehicles with overall height exceeding 4.5 metres]]></opt>
+        <opt indx="2"><![CDATA[no entry for vehicles with overall width exceeding 4.5 metres]]></opt>
+        <opt indx="3"><![CDATA[no entry for vehicles with overall length exceeding 4.5 metres]]></opt>
+    </choises>
+    <ansIndx>1</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[When seeing this sign, you should : ]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_40.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[slow down and beware of merging traffic.]]></opt>
+        <opt indx="2"><![CDATA[be prepared to overtake.]]></opt>
+        <opt indx="3"><![CDATA[slow down and keep to the left.]]></opt>
+    </choises>
+    <ansIndx>2</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[What does this sign indicate?]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_42.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[Start of expressway]]></opt>
+        <opt indx="2"><![CDATA[End of expressway]]></opt>
+        <opt indx="3"><![CDATA[Overhead bridge ahead]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[What does this sign indicate?]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_60.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[One-way street.]]></opt>
+        <opt indx="2"><![CDATA[One-way traffic.]]></opt>
+        <opt indx="3"><![CDATA[Left turn ahead.]]></opt>
+    </choises>
+    <ansIndx>1</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[This sign indicates that there is :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_60.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[a roundabout ahead.]]></opt>
+        <opt indx="2"><![CDATA[a sharp right deviation ahead.]]></opt>
+        <opt indx="3"><![CDATA[a right bend ahead.]]></opt>
+    </choises>
+    <ansIndx>2</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[A single white line as shown in the picture indicates that :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_94.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[the car must stop.]]></opt>
+        <opt indx="2"><![CDATA[the car may park.]]></opt>
+        <opt indx="3"><![CDATA[the car need not stop.]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[Road signs and signals are meant mainly for :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_8.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[motorists.]]></opt>
+        <opt indx="2"><![CDATA[bicyclists.]]></opt>
+        <opt indx="3"><![CDATA[pedestrians.]]></opt>
+        <opt indx="4"><![CDATA[pedestrians.]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[Seeing this sign means you have to :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_8.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[turn left ahead.]]></opt>
+        <opt indx="2"><![CDATA[change to left lane]]></opt>
+        <opt indx="3"><![CDATA[keep left.]]></opt>
+    </choises>
+    <ansIndx>1</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[What does this sign mean?]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img3_10.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[Two-way traffic. Beware of oncoming traffic.]]></opt>
+        <opt indx="2"><![CDATA[Split traffic. Vehicles may pass on either side.]]></opt>
+        <opt indx="3"><![CDATA[Merging traffic. Get ready to turn either right or left.]]></opt>
+    </choises>
+    <ansIndx>2</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[This sign indicates :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_19.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[no entry for vehicles with height exceeding 2.3 metres.]]></opt>
+        <opt indx="2"><![CDATA[no entry for vehicles with width exceeding 2.3 metres.]]></opt>
+        <opt indx="3"><![CDATA[no entry for vehicles with length exceeding 2.3 metres.]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[This sign indicates]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_20.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[no entry for vehicles with overall height exceeding 4.5 metres]]></opt>
+        <opt indx="2"><![CDATA[no entry for vehicles with overall width exceeding 4.5 metres]]></opt>
+        <opt indx="3"><![CDATA[no entry for vehicles with overall length exceeding 4.5 metres]]></opt>
+    </choises>
+    <ansIndx>1</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[When seeing this sign, you should : ]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_40.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[slow down and beware of merging traffic.]]></opt>
+        <opt indx="2"><![CDATA[be prepared to overtake.]]></opt>
+        <opt indx="3"><![CDATA[slow down and keep to the left.]]></opt>
+    </choises>
+    <ansIndx>2</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[What does this sign indicate?]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_42.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[Start of expressway]]></opt>
+        <opt indx="2"><![CDATA[End of expressway]]></opt>
+        <opt indx="3"><![CDATA[Overhead bridge ahead]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[What does this sign indicate?]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_60.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[One-way street.]]></opt>
+        <opt indx="2"><![CDATA[One-way traffic.]]></opt>
+        <opt indx="3"><![CDATA[Left turn ahead.]]></opt>
+    </choises>
+    <ansIndx>1</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[This sign indicates that there is :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_60.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[a roundabout ahead.]]></opt>
+        <opt indx="2"><![CDATA[a sharp right deviation ahead.]]></opt>
+        <opt indx="3"><![CDATA[a right bend ahead.]]></opt>
+    </choises>
+    <ansIndx>2</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[A single white line as shown in the picture indicates that :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_94.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[the car must stop.]]></opt>
+        <opt indx="2"><![CDATA[the car may park.]]></opt>
+        <opt indx="3"><![CDATA[the car need not stop.]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[Road signs and signals are meant mainly for :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_8.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[motorists.]]></opt>
+        <opt indx="2"><![CDATA[bicyclists.]]></opt>
+        <opt indx="3"><![CDATA[pedestrians.]]></opt>
+        <opt indx="4"><![CDATA[pedestrians.]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[Seeing this sign means you have to :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_8.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[turn left ahead.]]></opt>
+        <opt indx="2"><![CDATA[change to left lane]]></opt>
+        <opt indx="3"><![CDATA[keep left.]]></opt>
+    </choises>
+    <ansIndx>1</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[What does this sign mean?]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img3_10.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[Two-way traffic. Beware of oncoming traffic.]]></opt>
+        <opt indx="2"><![CDATA[Split traffic. Vehicles may pass on either side.]]></opt>
+        <opt indx="3"><![CDATA[Merging traffic. Get ready to turn either right or left.]]></opt>
+    </choises>
+    <ansIndx>2</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[This sign indicates :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_19.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[no entry for vehicles with height exceeding 2.3 metres.]]></opt>
+        <opt indx="2"><![CDATA[no entry for vehicles with width exceeding 2.3 metres.]]></opt>
+        <opt indx="3"><![CDATA[no entry for vehicles with length exceeding 2.3 metres.]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[This sign indicates]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_20.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[no entry for vehicles with overall height exceeding 4.5 metres]]></opt>
+        <opt indx="2"><![CDATA[no entry for vehicles with overall width exceeding 4.5 metres]]></opt>
+        <opt indx="3"><![CDATA[no entry for vehicles with overall length exceeding 4.5 metres]]></opt>
+    </choises>
+    <ansIndx>1</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[When seeing this sign, you should : ]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_40.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[slow down and beware of merging traffic.]]></opt>
+        <opt indx="2"><![CDATA[be prepared to overtake.]]></opt>
+        <opt indx="3"><![CDATA[slow down and keep to the left.]]></opt>
+    </choises>
+    <ansIndx>2</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[What does this sign indicate?]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_42.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[Start of expressway]]></opt>
+        <opt indx="2"><![CDATA[End of expressway]]></opt>
+        <opt indx="3"><![CDATA[Overhead bridge ahead]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[What does this sign indicate?]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_60.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[One-way street.]]></opt>
+        <opt indx="2"><![CDATA[One-way traffic.]]></opt>
+        <opt indx="3"><![CDATA[Left turn ahead.]]></opt>
+    </choises>
+    <ansIndx>1</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[This sign indicates that there is :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_60.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[a roundabout ahead.]]></opt>
+        <opt indx="2"><![CDATA[a sharp right deviation ahead.]]></opt>
+        <opt indx="3"><![CDATA[a right bend ahead.]]></opt>
+    </choises>
+    <ansIndx>2</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[A single white line as shown in the picture indicates that :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_94.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[the car must stop.]]></opt>
+        <opt indx="2"><![CDATA[the car may park.]]></opt>
+        <opt indx="3"><![CDATA[the car need not stop.]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[Road signs and signals are meant mainly for :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_8.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[motorists.]]></opt>
+        <opt indx="2"><![CDATA[bicyclists.]]></opt>
+        <opt indx="3"><![CDATA[pedestrians.]]></opt>
+        <opt indx="4"><![CDATA[pedestrians.]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[Seeing this sign means you have to :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_8.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[turn left ahead.]]></opt>
+        <opt indx="2"><![CDATA[change to left lane]]></opt>
+        <opt indx="3"><![CDATA[keep left.]]></opt>
+    </choises>
+    <ansIndx>1</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[What does this sign mean?]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img3_10.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[Two-way traffic. Beware of oncoming traffic.]]></opt>
+        <opt indx="2"><![CDATA[Split traffic. Vehicles may pass on either side.]]></opt>
+        <opt indx="3"><![CDATA[Merging traffic. Get ready to turn either right or left.]]></opt>
+    </choises>
+    <ansIndx>2</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[This sign indicates :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_19.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[no entry for vehicles with height exceeding 2.3 metres.]]></opt>
+        <opt indx="2"><![CDATA[no entry for vehicles with width exceeding 2.3 metres.]]></opt>
+        <opt indx="3"><![CDATA[no entry for vehicles with length exceeding 2.3 metres.]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[This sign indicates]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_20.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[no entry for vehicles with overall height exceeding 4.5 metres]]></opt>
+        <opt indx="2"><![CDATA[no entry for vehicles with overall width exceeding 4.5 metres]]></opt>
+        <opt indx="3"><![CDATA[no entry for vehicles with overall length exceeding 4.5 metres]]></opt>
+    </choises>
+    <ansIndx>1</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[When seeing this sign, you should : ]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_40.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[slow down and beware of merging traffic.]]></opt>
+        <opt indx="2"><![CDATA[be prepared to overtake.]]></opt>
+        <opt indx="3"><![CDATA[slow down and keep to the left.]]></opt>
+    </choises>
+    <ansIndx>2</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[What does this sign indicate?]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_42.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[Start of expressway]]></opt>
+        <opt indx="2"><![CDATA[End of expressway]]></opt>
+        <opt indx="3"><![CDATA[Overhead bridge ahead]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[What does this sign indicate?]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_60.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[One-way street.]]></opt>
+        <opt indx="2"><![CDATA[One-way traffic.]]></opt>
+        <opt indx="3"><![CDATA[Left turn ahead.]]></opt>
+    </choises>
+    <ansIndx>1</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[This sign indicates that there is :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_60.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[a roundabout ahead.]]></opt>
+        <opt indx="2"><![CDATA[a sharp right deviation ahead.]]></opt>
+        <opt indx="3"><![CDATA[a right bend ahead.]]></opt>
+    </choises>
+    <ansIndx>2</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  <item>
+    <question><![CDATA[A single white line as shown in the picture indicates that :]]></question>
+    <img>http://www.sgdrivetest.com/class/testimages/img1_94.png</img>
+    <choises>
+        <opt indx="1"><![CDATA[the car must stop.]]></opt>
+        <opt indx="2"><![CDATA[the car may park.]]></opt>
+        <opt indx="3"><![CDATA[the car need not stop.]]></opt>
+    </choises>
+    <ansIndx>0</ansIndx>
+    <remarks><![CDATA[Remarks text comes here]]></remarks>
+  </item>
+  
+
+</questionList>

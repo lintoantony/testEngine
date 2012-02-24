@@ -1,0 +1,132 @@
+﻿package com.aol.pinball.preloader {
+	
+    import flash.events.TimerEvent;    
+    import flash.events.ProgressEvent;    
+    import flash.display.MovieClip;
+    import flash.display.Loader;
+    import flash.events.Event;
+    import flash.net.URLRequest;
+    import flash.utils.Timer;
+	
+	import flash.system.ApplicationDomain;
+	import flash.system.LoaderContext;
+	import flash.system.SecurityDomain;
+	
+	import flash.display.*;
+
+	//import cntxtmenu.ContextMenuCreator;
+	//import flash.net.SharedObject;
+	//import flash.external.ExternalInterface;
+
+     
+    /**
+     * This is the document class for the preloader wrapper swf.
+     * 
+     * To use, embed your swf as preloader.swf?swf=mainfile.swf
+     */
+    public class PreloaderApp extends MovieClip {
+
+    	private var loader:Loader;
+		
+		private var animClip:MovieClip;
+		private var bgMc:MovieClip;
+		public var progressbar_mc:ProgressBar;
+    	
+        public function PreloaderApp() {
+			
+			//stage.scaleMode = StageScaleMode.NO_SCALE;
+			//stage.align = StageAlign.LEFT;
+			
+			bgMc = new BgMc();
+			//bgMc.initText.visible = false;
+			this.addChild(bgMc);
+			
+			animClip = new AnimClip();
+			animClip.x = 480/2 - animClip.width/2;
+			animClip.y = 800/2 - animClip.height/2;
+			this.addChild(animClip);
+			
+			progressbar_mc.x = 205;
+			progressbar_mc.y = 255;
+			
+			this.swapChildren(bgMc, progressbar_mc);
+			this.swapChildren(animClip, progressbar_mc);
+        	
+        	// FOR ONLINE LOADING
+        	
+        	var swfUrl:String = loaderInfo.parameters['gameSwfUrl']!=null ? loaderInfo.parameters['gameSwfUrl'] : 'http://www.aolcdn.com/pinball_test/pinball_game_new_013.swf';
+        	loader = new Loader(); 	
+			var req:URLRequest = new URLRequest(swfUrl);
+			var ldrContext:LoaderContext = new LoaderContext(false, ApplicationDomain.currentDomain);
+			ldrContext.securityDomain = SecurityDomain.currentDomain;
+			
+        	loader.contentLoaderInfo.addEventListener( Event.INIT, startApp );
+            loader.contentLoaderInfo.addEventListener( ProgressEvent.PROGRESS, onLoaderProgress );
+			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, completeHandler);
+            loader.load(req, ldrContext);
+            
+            
+            // FOR LOCAL LOADING .... Need to comment when publishing for online
+        	/*
+        	var swfUrl:String = loaderInfo.parameters['gameSwfUrl']!=null ? loaderInfo.parameters['gameSwfUrl'] : 'Main.swf';
+        	loader = new Loader(); 	
+			var req:URLRequest = new URLRequest(swfUrl);
+			
+        	loader.contentLoaderInfo.addEventListener( Event.INIT, startApp );
+            loader.contentLoaderInfo.addEventListener( ProgressEvent.PROGRESS, onLoaderProgress );
+			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, completeHandler);
+            loader.load(req);
+            */
+            //var contextMenuCreatorObj:ContextMenuCreator = new ContextMenuCreator(this);
+        }
+        
+        private function onLoaderProgress(event:ProgressEvent=null) : void {
+        	progressbar_mc.setPercent( event.bytesLoaded / event.bytesTotal );
+        }
+		private function completeHandler(event:Event):void{
+            
+        }
+
+        private function startApp( e:Event ) : void {
+        	// delay before starting app
+        	progressbar_mc.setPercent( 1 );
+
+			doStartApp();
+			
+			var values:Object = new Object();
+			values.stageRef = this;
+			
+			var appConfigXmlUrl:String = loaderInfo.parameters['appConfigXmlUrl']!=null ? loaderInfo.parameters['appConfigXmlUrl'] : '../deploy/xmls/app_config.xml';
+			
+			values.appConfigXmlUrl = appConfigXmlUrl;
+			
+			// SETTING THE FLASHVARS ON THE LOADED SWF
+			e.target.content.setFlashVarValues(values);
+
+			this.removeAssets();
+			
+			loader.content.visible = true;
+        }
+
+        private function doStartApp( e:Event=null) : void {
+			
+			loader.content.visible = false;
+			addChild( loader.content );
+        }
+		
+		public function removeAssets():void{
+			// kill the progress bar
+        	progressbar_mc.reset();
+        	progressbar_mc.hide();
+			
+			removeChild( progressbar_mc );
+			removeChild(animClip);
+			
+			bgMc.initText.visible = true;
+			
+			removeChild(bgMc);
+		}
+
+    }
+}
+
