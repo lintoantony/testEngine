@@ -62,7 +62,7 @@ package com.linto.dtengine.view.components{
 				header = new Header();
 				header.name = "header";
 				header.x = 35;
-				header.y = 20;
+				header.y = 10;
 				header.label.mouseEnabled = false;
 				
 				this.addChild(header);
@@ -73,13 +73,13 @@ package com.linto.dtengine.view.components{
 			var welcomeImg:WelcomeImg = new WelcomeImg();
 			welcomeImg.name = "welcomeImg";
 			welcomeImg.x = 760 - welcomeImg.width - 5;
-			welcomeImg.y = 550 - welcomeImg.height - 25;
+			welcomeImg.y = 550 - welcomeImg.height - 30;
 			this.addChild(welcomeImg);
 			
 			//Footer
 			if(footer == null){
 				footer = new Footer();
-				footer.x = 760 - footer.width - 10;
+				footer.x = 760 - footer.width - 25;
 				footer.y = 550 - footer.height - 8;
 				footer.label.mouseEnabled = false;
 				footer.label.text = this.configDataXml.labelTexts.label.(@type=="copyright")[0].text();
@@ -118,6 +118,10 @@ package com.linto.dtengine.view.components{
 					itemObj = new Object();
 					itemObj.label = this.configDataXml.userOptions.option[i].choices.item[j].text();
 					itemObj.data = this.configDataXml.userOptions.option[i].choices.item[j].@id;
+					
+					//trace("itemObj.label = "+itemObj.label);
+					//trace("itemObj.data = "+itemObj.data);
+					
 					dpArray.push(itemObj);
 				}
 				label = this.configDataXml.userOptions.option[i].label.text();
@@ -159,8 +163,8 @@ package com.linto.dtengine.view.components{
 			//Start button
 			var startBut:StartBut = new StartBut();
 			startBut.name = "startBut";
-			startBut.x = optionsHolder.x + optionsHolder.width/2 - startBut.width/2;
-			startBut.y = optionsHolder.y + optionsHolder.height - 5;
+			startBut.x = optionsHolder.x + optionsHolder.width/2 - startBut.width/2 + 30;
+			startBut.y = optionsHolder.y + optionsHolder.height + 30;
 			startBut.label.mouseEnabled = false;
 			startBut.label.text = this.configDataXml.labelTexts.label.(@type=="start")[0].text();
 			startBut.buttonMode = true;
@@ -170,8 +174,8 @@ package com.linto.dtengine.view.components{
 			//Instruction
 			var instrLabel:InstrLabel = new InstrLabel();
 			instrLabel.name = "instrLabel";
-			instrLabel.x = startBut.x + startBut.width/2 - instrLabel.width/2;
-			instrLabel.y = startBut.y + startBut.height + 10;
+			instrLabel.x = startBut.x + startBut.width/2 - instrLabel.width/2 - 30;
+			instrLabel.y = startBut.y + startBut.height - 70;
 			instrLabel.label.text = this.configDataXml.labelTexts.label.(@type=="instruction")[0].text();
 			instrLabel.label.mouseEnabled = false;
 			this.addChild(instrLabel);
@@ -233,7 +237,7 @@ package com.linto.dtengine.view.components{
 					sendString = sendString + sepChar + thisCb.selectedItem.data;
 				}
 			}
-			trace("sendString = "+sendString);
+			trace("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sendString = "+sendString);
 			
 			this.configProxyRef.storeUserConfigs(sendString);
 			

@@ -1,13 +1,14 @@
 package com.linto.utils{
 	
+	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
 	import flash.events.SecurityErrorEvent;
-	import flash.net.URLLoader;
-	import flash.net.URLRequest;
-	import flash.display.Sprite;
+	import flash.net.*;
 
 	public class ServerComm extends Sprite{
+		
+		public var data:Object;
 		
 		public function ServerComm(){
 		}
@@ -16,7 +17,6 @@ package com.linto.utils{
 			
 			var request:URLRequest = new URLRequest(apiUrl); 
 			request.method = URLRequestMethod.POST; 
- 
 			request.data = urlVariables; 
 			
 			var loader:URLLoader = new URLLoader(request); 
@@ -27,6 +27,8 @@ package com.linto.utils{
 		}
 		
 		protected function onRequestComplete(event:Event):void{
+			var loader:URLLoader = URLLoader(event.target);
+			data = loader.data;
 			dispatchEvent(event);
 		}
 		

@@ -34,6 +34,7 @@ package com.linto.dtengine
 		public static const ON_FINISH_TEST:String = "onFinishTest";
 		public static const ON_HEADER_CHANGE:String = "onHeaderChange";
 		public static const ON_TRY_AGAIN:String = "onTryAgain";
+		public static const GRAPH_DATA_LOADED:String = "graphDataLoaded";
 
 		/**
          * Singleton ApplicationFacade Factory Method

@@ -51,7 +51,8 @@ package com.linto.dtengine.view
 		override public function listNotificationInterests():Array 
 		{
 			return [ 
-				ApplicationFacade.ON_FINISH_TEST
+				ApplicationFacade.ON_FINISH_TEST,
+				ApplicationFacade.GRAPH_DATA_LOADED
 			];
 		}
 		
@@ -71,7 +72,9 @@ package com.linto.dtengine.view
 				case ApplicationFacade.ON_FINISH_TEST:
 					
 					resultScreen.initialize();
-					
+					break;
+				case ApplicationFacade.GRAPH_DATA_LOADED:
+					this.resultScreen.drawGraph();
 					break;
 			}
 		}

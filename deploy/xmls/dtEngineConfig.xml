@@ -72,6 +72,7 @@
         </list>
     </terms>
     <serverApi><![CDATA[xmls/questionsList.xml]]></serverApi>
+	<graphApi><![CDATA[xmls/graph.xml]]></graphApi>
 </config>
 
 

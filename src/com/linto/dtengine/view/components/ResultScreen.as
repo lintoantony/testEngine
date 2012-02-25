@@ -8,10 +8,12 @@ package com.linto.dtengine.view.components{
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.*;
+	import flash.geom.ColorTransform;
 
 	public class ResultScreen extends Sprite {
 		
 		public static const ON_TRY_AGAIN:String = "onTryAgain";
+		private const TOTAL_GRAPH_BARS:int = 8;
 		
 		public var id:String;
 		
@@ -95,19 +97,23 @@ package com.linto.dtengine.view.components{
 			summaryClip.label5.text = this.configProxyRef.configDataXml.labelTexts.label.(@type=="result")[0].text();
 			
 			summaryClip.result1.text = this.configProxyRef.theoryTest;
-			summaryClip.result2.text = this.dataProxyRef.getTotalCorrectAnswers()+"/"+this.dataProxyRef.getTotalNumOfQs();
-			summaryClip.result3.text = "5.11 mins";
-			var per:Number = this.dataProxyRef.getTotalCorrectAnswers()/this.dataProxyRef.getTotalNumOfQs()*100;
+			summaryClip.result2.text = this.dataProxyRef.getTotalCorrectAnswers()+"/"+this.configProxyRef.userSelectedQCount;
+			summaryClip.result3.text = this.dataProxyRef.timeTaken;
+			var per:Number = this.dataProxyRef.getTotalCorrectAnswers()/this.configProxyRef.userSelectedQCount*100;
 			summaryClip.result4.text =  Math.round(per) +" %";
 			var passOrFail:String;
-			if(per > 90){
+			if(per >= 90){
 				passOrFail = this.configProxyRef.configDataXml.labelTexts.label.(@type=="pass")[0].text();
+				changeColor(summaryClip.result5Mc, 0x009900);
 			}else{
 				passOrFail = this.configProxyRef.configDataXml.labelTexts.label.(@type=="fail")[0].text();
+				changeColor(summaryClip.result5Mc, 0xff0000);
 			}
-			summaryClip.result5.text = passOrFail;
+			summaryClip.result5Mc.result5.text = passOrFail;
 			
 			// Graph
+			summaryClip.graphMc.bars.visible = false;
+			summaryClip.graphMc.loading.visible = true;
 			this.renderGraph();
 
 		}
@@ -118,6 +124,52 @@ package com.linto.dtengine.view.components{
 			this.dispatchEvent(finishEvent);
 		}
 		
+		private function renderGraph():void{
+			this.dataProxyRef.loadGraphData();
+		}
+		
+		public function drawGraph():void{
+			//trace("this.dataProxyRef.graphXmlData = "+this.dataProxyRef.graphXmlData);
+			
+			var totalItems:int = this.dataProxyRef.graphXmlData.item.length();
+			if(totalItems > TOTAL_GRAPH_BARS){
+				totalItems = TOTAL_GRAPH_BARS;
+			}
+			var summaryClip:SummaryClip = this.summaryHolder.getChildByName("summaryClip") as SummaryClip;
+			
+			hideAll();
+
+			var percentage:Number;
+			var thisBar:MovieClip;
+			for(var i:int=1;i<=totalItems;i++){
+				percentage =  Number(this.dataProxyRef.graphXmlData.item[i-1]);
+				thisBar = summaryClip.graphMc.bars["bar"+i] as MovieClip;
+				//trace("thisBar = "+thisBar);
+				thisBar.scaleY = percentage/100;
+				thisBar.visible = true;
+				if(percentage >= 90){
+					changeColor(thisBar, 0x009900);
+				}else{
+					changeColor(thisBar, 0xff0000);
+				}
+			}
+			summaryClip.graphMc.loading.visible = false;
+			summaryClip.graphMc.bars.visible = true;
+		}
+		private function hideAll():void{
+			var summaryClip:SummaryClip = this.summaryHolder.getChildByName("summaryClip") as SummaryClip;
+			for(var i:int=1;i<=TOTAL_GRAPH_BARS;i++){
+				summaryClip.graphMc.bars["bar"+i].visible = false;
+			}
+		}
+		
+		private function changeColor(mc:MovieClip, color:Number):void{
+			var ct:ColorTransform = mc.transform.colorTransform;
+			ct.color = color;
+			mc.transform.colorTransform = ct;
+		}
+
+		/*
 		private function renderGraph():void{
 			var summaryClip:SummaryClip = this.summaryHolder.getChildByName("summaryClip") as SummaryClip;
 			summaryClip.graphMc.bar1.visible = false;
@@ -155,6 +207,7 @@ package com.linto.dtengine.view.components{
 			}
 			
 		}
+		*/
 		private function enableSummaryBut(isEnabled:Boolean):void{
 			this.summaryBut.buttonMode = isEnabled;
 			if(isEnabled == true){

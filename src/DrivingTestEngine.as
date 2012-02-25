@@ -19,7 +19,7 @@ package
 			globalVars.stageRef = this.stage;
 			globalVars.appConfigXml = "xmls/dtEngineConfig.xml";
 			
-			//this.setGlobalVars(globalVars);
+			this.setGlobalVars(globalVars);
 			
 		}
 		

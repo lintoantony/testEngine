@@ -5,14 +5,14 @@ package com.linto.dtengine.view.components{
 	import com.linto.dtengine.model.ConfigProxy;
 	import com.linto.dtengine.model.DataProxy;
 	import com.linto.events.CustEvent;
+	import com.linto.utils.ServerComm;
 	import com.linto.utils.SoundEffects;
 	import com.linto.utils.TimerUtil;
 	
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.*;
-	import flash.net.URLRequest;
-	import flash.net.navigateToURL;
+	import flash.net.*;
 	import flash.text.TextFormat;
 	import flash.utils.Timer;
 	
@@ -23,9 +23,7 @@ package com.linto.dtengine.view.components{
 		public static const ON_PREV_PRESS:String = "onPrevPress";
 		public static const ON_NEXT_PRESS:String = "onNextPress";
 		public static const ON_FINISH_PRESS:String = "onFinishPress";
-		
-		public var testMode:String = "PRACTICE";
-		
+
 		public var id:String;
 		private var dataXml:XML;
 		private var screenHolder:MovieClip;
@@ -41,6 +39,8 @@ package com.linto.dtengine.view.components{
 		private var qFontSize:Number = 16;;
 		private var aFontSize:Number = 14;
 		private var fontChangeCount:Number = 0;
+		
+		private var isClickedBut:String = "";
 		
 		public function TestScreen( id:String, params:Array=null ) {
 			this.id = id;
@@ -202,6 +202,11 @@ package com.linto.dtengine.view.components{
 			qProgress.nomTxt.text = "0";
 			//qProgress.denomTxt.text = this.dataXml.item.length();
 			qProgress.denomTxt.text = String(this.configProxyRef.userSelectedQCount);
+			qProgress.visible = true;
+			// If it is Practice mode.
+			if(configProxyRef.testTypeModeIndx == 1){
+				qProgress.visible = false;
+			}
 			
 			// Explanation Txt
 			var explanationTxt:ExplanationTxt = new ExplanationTxt();
@@ -212,8 +217,8 @@ package com.linto.dtengine.view.components{
 			// Report Bug
 			var reportBugMc:ReportBugMc = new ReportBugMc();
 			reportBugMc.name = "reportBugMc";
-			reportBugMc.x = 470;
-			reportBugMc.y = 440;
+			reportBugMc.x = 670;
+			reportBugMc.y = 410;
 			reportBugMc.label.mouseEnabled = false;
 			reportBugMc.label.text = this.configProxyRef.configDataXml.labelTexts.label.(@type=="bug")[0].text();
 			this.screenHolder.addChild(reportBugMc);
@@ -304,10 +309,34 @@ package com.linto.dtengine.view.components{
 		}
 		
 		private function onBugReport(evt:MouseEvent):void{
+			var variables:URLVariables = new URLVariables(); 
+			//variables.configStr = configStr;
+			variables.operation = "SEND_BUG_REPORT";
 			
+			//params = "?sub="+args.sub+"&lan="+args.lan+"&noq="+args.noq+"&typ="+args.typ;
+			var paramObj:Object = new Object();
+			paramObj.qno = this.dataProxyRef.currentQuestionId;
+			trace("TestScreen.onBugReport : paramObj.qno = "+paramObj.qno);
+
+			var apiUrl:String = ConfigProxy.getApi("BUG", paramObj);
+			trace("TestScreen.onBugReport : apiUrl = "+apiUrl);
+			
+			this.openPage(apiUrl);
+		}
+		
+		private function openPage(url:String):void{
+			var request:URLRequest = new URLRequest(url);
+			try {
+				navigateToURL(request, '_blank'); // second argument is target
+			} catch (e:Error) {
+				trace("Error occurred!");
+			}
 		}
 		
 		private function renderQuestion():void{
+			
+			this.dataProxyRef.currentQuestionId = this.dataXml.item[this.dataProxyRef.currentQuestionIndex].qno;
+			trace("this.dataProxyRef.currentQuestionId = "+this.dataProxyRef.currentQuestionId);
 			
 			var questionHolder:MovieClip = this.screenHolder.getChildByName("questionHolder") as MovieClip;
 			questionHolder.qTxt.autoSize = "left";
@@ -379,6 +408,7 @@ package com.linto.dtengine.view.components{
 					this.renderQuestion();
 					break;
 				case "finishBut":
+					this.dataProxyRef.timeTaken = this.timerUtil.getTimeTaken();
 					this.timerUtil.stopTimer();
 					this.onFinish();
 					break;
@@ -455,6 +485,7 @@ package com.linto.dtengine.view.components{
 			}
 			var thisOpt:AnswerItem;
 			var yVal:Number = 0;
+			var userSelection:Number;
 			for(var i:int=0;i<numOfOptions;i++){
 				thisOpt = new AnswerItem();
 				thisOpt.name = "opt_"+i;
@@ -470,6 +501,17 @@ package com.linto.dtengine.view.components{
 				
 				thisOpt.indicatorMc.optionTxt.text = optionArr[i];
 				
+				// Added for showing previous selected answer
+				
+				if(this.configProxyRef.testTypeModeIndx == 1){
+					userSelection = this.dataProxyRef.testResultArray[questionIndex].userSelection;
+					if(i == userSelection){
+						//thisOpt.indicatorMc.gotoAndStop(3);
+						thisOpt.gotoAndStop(3);
+					}
+				}
+				
+				
 				thisOpt.answerTxt.mouseEnabled = false;
 				thisOpt.buttonMode = true;
 				thisOpt.isClicked = false;
@@ -481,7 +523,7 @@ package com.linto.dtengine.view.components{
 				yVal = yVal + thisOpt.height + 4;
 			}
 		}
-		/*
+		
 		private function resetOthers():void{
 			var numOfOptions:int = this.dataXml.item[this.dataProxyRef.currentQuestionIndex].choises.opt.length();
 			var thisOpt:MovieClip;
@@ -493,7 +535,7 @@ package com.linto.dtengine.view.components{
 				thisOpt.gotoAndStop(1);
 			}
 		}
-		*/
+		
 		private function onOptOver(evt:MouseEvent):void{
 			if(evt.currentTarget.isClicked == false){
 				evt.currentTarget.gotoAndStop(2);
@@ -505,13 +547,8 @@ package com.linto.dtengine.view.components{
 			}
 		}
 		private function onOptClick(evt:MouseEvent):void{
-			
+
 			var explanationTxt:ExplanationTxt = this.screenHolder.getChildByName("explanationTxt") as ExplanationTxt;
-			
-			evt.currentTarget.isClicked = true;
-			evt.currentTarget.gotoAndStop(3);
-			
-			this.disableAll();
 			
 			if(this.configProxyRef.testTypeModeIndx == 0){
 				
@@ -528,10 +565,14 @@ package com.linto.dtengine.view.components{
 					this.showCorrectOpt();
 					explanationTxt.label.text = this.dataXml.item[this.dataProxyRef.currentQuestionIndex].remarks.text();
 				}
+				this.disableAll();
 			}else{
-				//this.resetOthers();
+				this.resetOthers();
 			}
-			
+
+			evt.currentTarget.isClicked = true;
+			evt.currentTarget.gotoAndStop(3);
+
 			this.dataProxyRef.testResultArray[this.dataProxyRef.currentQuestionIndex].userSelection = evt.currentTarget.index as Number;
 			
 			var qProgress:QProgress = this.screenHolder.getChildByName("qProgress") as QProgress;
@@ -570,7 +611,7 @@ package com.linto.dtengine.view.components{
 		}
 		private function checkForAnswer(selectedIndx:int):Boolean{
 			var correctIndx:Number = Number(this.dataXml.item[this.dataProxyRef.currentQuestionIndex].ansIndx);
-			trace("correctIndx = "+correctIndx+" : selectedIndx = "+selectedIndx);
+			//trace("correctIndx = "+correctIndx+" : selectedIndx = "+selectedIndx);
 			if(selectedIndx == correctIndx){
 				return true;
 			}else{
