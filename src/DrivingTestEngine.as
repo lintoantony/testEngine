@@ -5,8 +5,7 @@ package
 	import flash.display.Sprite;
 	import flash.system.Security;
 	
-	//[SWF(backgroundColor='#c4e0ee', frameRate='30', widht='850', height='620')]
-	[SWF(backgroundColor='#c4e0ee', frameRate='30', widht='760', height='550')]
+	[SWF(backgroundColor='#c4e0ee', frameRate='30', widht='832', height='622')]
 	
 	public class DrivingTestEngine extends Sprite
 	{

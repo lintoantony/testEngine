@@ -71,6 +71,7 @@
             <item><![CDATA[6. This is not an actual test conducted by Traffic Police (mockup test).]]></item>
         </list>
     </terms>
+    <logoUrl><![CDATA[images/logo.jpg]]></logoUrl>
     <serverApi><![CDATA[xmls/questionsList.xml]]></serverApi>
 	<graphApi><![CDATA[xmls/graph.xml]]></graphApi>
 </config>

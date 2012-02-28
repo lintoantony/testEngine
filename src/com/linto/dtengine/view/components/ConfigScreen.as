@@ -16,6 +16,9 @@ package com.linto.dtengine.view.components{
 	
 	
     public class ConfigScreen extends Sprite {
+		
+		public static const APP_WIDTH:int = 832;
+		public static const APP_HEIGHT:int = 622;
 
 		public static const ON_START_PRESS:String = "onStartPress";
 		
@@ -68,19 +71,22 @@ package com.linto.dtengine.view.components{
 				this.addChild(header);
 			}
 			header.label.text = this.configDataXml.appHeading.text();
-			
-			//Welcome image
-			var welcomeImg:WelcomeImg = new WelcomeImg();
-			welcomeImg.name = "welcomeImg";
-			welcomeImg.x = 760 - welcomeImg.width - 5;
-			welcomeImg.y = 550 - welcomeImg.height - 30;
-			this.addChild(welcomeImg);
+
+			// Logo
+			var imageBox:ImageBox = new ImageBox();
+			imageBox.name = "imageBox";
+			imageBox.x = APP_WIDTH - 190;
+			imageBox.y = APP_HEIGHT - 160;
+			this.addChild(imageBox);
+			imageBox.setCellSize(200,200);
+			imageBox.loadThumbnail(this.configDataXml.logoUrl.text());
+			//imageBox.visible = false;
 			
 			//Footer
 			if(footer == null){
 				footer = new Footer();
-				footer.x = 760 - footer.width - 25;
-				footer.y = 550 - footer.height - 8;
+				footer.x = APP_WIDTH - footer.width - 25;
+				footer.y = APP_HEIGHT - footer.height - 8;
 				footer.label.mouseEnabled = false;
 				footer.label.text = this.configDataXml.labelTexts.label.(@type=="copyright")[0].text();
 				this.addChild(footer);
@@ -253,10 +259,9 @@ package com.linto.dtengine.view.components{
 			this.removeChild(this.getChildByName("startBut"));
 			this.removeChild(this.getChildByName("instrLabel"));
 			this.removeChild(this.getChildByName("termsMc"));
-			this.removeChild(this.getChildByName("welcomeImg"));
+			this.removeChild(this.getChildByName("imageBox") as MovieClip);
 			
 			var bgClip:BgClip = this.getChildByName("bgClip") as BgClip;
-			bgClip.overlayImg.x = 560;
 		}
 
     }
