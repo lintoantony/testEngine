@@ -16,7 +16,16 @@ package com.linto.dtengine.view.components{
 	import flash.text.TextFormat;
 	import flash.utils.Timer;
 	
+	import org.osmf.elements.VideoElement;
+	import org.osmf.media.MediaPlayerSprite;
+	import org.osmf.media.URLResource;
+	import org.osmf.utils.URL;
+	
 	public class TestScreen extends Sprite {
+		
+		//URI of the media
+		public static const PROGRESSIVE_PATH:String = "http://mediapm.edgesuite.net/strobe/content/test/AFaerysTale_sylviaApostol_640_500_short.flv";
+		public var playerSprite:MediaPlayerSprite;
 		
 		private static const MAX_OPTIONS:int = 4;
 		
@@ -187,17 +196,25 @@ package com.linto.dtengine.view.components{
 			this.timerUtil.startTimer(timerTxt.label);
 			
 			// Image
+			/*
 			var imageBox:ImageBox = new ImageBox();
 			imageBox.name = "imageBox";
 			imageBox.x = 650;
 			imageBox.y = 125;
 			this.screenHolder.addChild(imageBox);
+			*/
 			
+			var supportMediaButton:SupportMediaButton = new SupportMediaButton();
+			supportMediaButton.name = "supportMediaButton";
+			supportMediaButton.x = 680;
+			supportMediaButton.y = 50;
+			this.screenHolder.addChild(supportMediaButton);
+
 			// Question Status
 			var qProgress:QProgress = new QProgress();
 			qProgress.name = "qProgress";
-			qProgress.x = imageBox.x - 50;
-			qProgress.y = imageBox.y + imageBox.height + 10;
+			qProgress.x = supportMediaButton.x;
+			qProgress.y = supportMediaButton.y + supportMediaButton.height + 100;
 			this.screenHolder.addChild(qProgress);
 			qProgress.nomTxt.text = "0";
 			//qProgress.denomTxt.text = this.dataXml.item.length();
@@ -226,8 +243,27 @@ package com.linto.dtengine.view.components{
 			reportBugMc.addEventListener(MouseEvent.CLICK, onBugReport);
 			
 			this.renderQuestion();
+			
+			var supportMediaHolder:SupportMediaHolder = new SupportMediaHolder();
+			supportMediaHolder.name = "supportMediaHolder";
+			supportMediaHolder.x = 50;
+			supportMediaHolder.y = 120;
+			supportMediaHolder.visible = false;
+			this.screenHolder.addChild(supportMediaHolder);
 
 		}
+		
+		public function attachAndPlayVideo( videoUrl:String ):MediaPlayerSprite{
+			//sprite that contains a MediaPlayer to manage display and control of MediaElements
+			playerSprite = new MediaPlayerSprite();
+			
+			//creates and sets the MediaElement (VideoElement) with a resource and path
+			var resource:URLResource = new URLResource( videoUrl );
+			playerSprite.media = new VideoElement( resource );
+			
+			return playerSprite;
+		}
+		
 		private function onFontButClick(evt:MouseEvent):void{
 			
 			switch(evt.currentTarget.name){
@@ -361,11 +397,18 @@ package com.linto.dtengine.view.components{
 			var fontButHolder:MovieClip = this.screenHolder.getChildByName("fontButHolder") as MovieClip;
 			fontButHolder.y = navButs.y;
 			
+			/*
 			var imageBox:ImageBox = this.screenHolder.getChildByName("imageBox") as ImageBox;
 			imageBox.unloadThumbnail();
 			imageBox.loadThumbnail(this.dataXml.item[this.dataProxyRef.currentQuestionIndex].img);
 			imageBox.addEventListener(MouseEvent.MOUSE_OVER, onImageOver);
 			imageBox.addEventListener(MouseEvent.MOUSE_OUT, onImageOut);
+			*/
+			
+			// TO DO : Here comes the button for support media
+			var supportMediaButton:SupportMediaButton = this.screenHolder.getChildByName("supportMediaButton") as SupportMediaButton;
+			supportMediaButton.buttonMode = true;
+			supportMediaButton.addEventListener(MouseEvent.CLICK, onSupportMediaClick);
 			
 			var progressBar:ProgressBar = this.screenHolder.getChildByName("progressBar") as ProgressBar; 
 			//var per:Number = (this.dataProxyRef.currentQuestionIndex+1)/this.dataXml.item.length();
@@ -379,6 +422,54 @@ package com.linto.dtengine.view.components{
 			explanationTxt.y = navButs.y + navButs.height + 5;
 
 		}
+		
+		private function attachSupportMediaPane():void{
+			// Scroll Pane
+			
+			// Video Player
+			
+			// Audio player
+			
+			// Image Loader
+			
+			// Text Holder
+		}
+		
+		private function showSuppportMedia(type:String):void{
+			// Make scrollPane visible
+			var supportMediaHolder:SupportMediaHolder = this.screenHolder.getChildByName("supportMediaHolder") as SupportMediaHolder;
+			switch(type){
+				case "text":
+					// Render the text content
+					
+					break;
+				case "image":
+					// Load Image
+					
+					break;
+				case "audio":
+					// Load audio file
+					
+					break;
+				case "video":
+					// Load video file
+					
+					supportMediaHolder.contentPane.source = this.attachAndPlayVideo(PROGRESSIVE_PATH);
+					
+					break;
+			}
+			
+			supportMediaHolder.visible = true;
+		}
+		
+		private function hideAllSupportMedia():void{
+			// Hide all media holders
+			
+			// Make scrollPane invisible
+			var supportMediaHolder:SupportMediaHolder = this.screenHolder.getChildByName("supportMediaHolder") as SupportMediaHolder;
+			supportMediaHolder.visible = false;
+		}
+		
 		private function onImageOver(evt:MouseEvent):void{
 			var imageBox:ImageBox = this.screenHolder.getChildByName("imageBox") as ImageBox;
 			imageBox.scaleX = 1.5;
@@ -388,6 +479,12 @@ package com.linto.dtengine.view.components{
 			var imageBox:ImageBox = this.screenHolder.getChildByName("imageBox") as ImageBox;
 			imageBox.scaleX = imageBox.scaleY = 1;
 		}
+		
+		private function onSupportMediaClick(evt:MouseEvent):void{
+			trace("onSupportMediaClick");
+			this.showSuppportMedia("video");
+		}
+		
 		private function clearPreviousQuestion():void{
 			var explanationTxt:ExplanationTxt = this.screenHolder.getChildByName("explanationTxt") as ExplanationTxt;
 			explanationTxt.label.text = "";
