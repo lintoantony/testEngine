@@ -14,17 +14,18 @@ package com.linto.dtengine.view.components{
 	import flash.events.*;
 	import flash.net.*;
 	import flash.text.TextFormat;
-	import flash.utils.Timer;
+	import flash.utils.*;
 	
+	import org.osmf.elements.AudioElement;
+	import org.osmf.elements.ImageElement;
 	import org.osmf.elements.VideoElement;
+	import org.osmf.media.MediaElement;
 	import org.osmf.media.MediaPlayerSprite;
 	import org.osmf.media.URLResource;
 	import org.osmf.utils.URL;
 	
 	public class TestScreen extends Sprite {
 		
-		//URI of the media
-		public static const PROGRESSIVE_PATH:String = "http://mediapm.edgesuite.net/strobe/content/test/AFaerysTale_sylviaApostol_640_500_short.flv";
 		public var playerSprite:MediaPlayerSprite;
 		
 		private static const MAX_OPTIONS:int = 4;
@@ -50,6 +51,8 @@ package com.linto.dtengine.view.components{
 		private var fontChangeCount:Number = 0;
 		
 		private var isClickedBut:String = "";
+		
+		private var scrollPaneInterval:uint;
 		
 		public function TestScreen( id:String, params:Array=null ) {
 			this.id = id;
@@ -249,17 +252,33 @@ package com.linto.dtengine.view.components{
 			supportMediaHolder.x = 50;
 			supportMediaHolder.y = 120;
 			supportMediaHolder.visible = false;
+			supportMediaHolder.closeButton.addEventListener(MouseEvent.CLICK, hideSupportMedia);
 			this.screenHolder.addChild(supportMediaHolder);
 
 		}
 		
-		public function attachAndPlayVideo( videoUrl:String ):MediaPlayerSprite{
+		public function attachAndPlayMedia(mediaType:String, mediaUrl:String):MediaPlayerSprite{
+			
 			//sprite that contains a MediaPlayer to manage display and control of MediaElements
 			playerSprite = new MediaPlayerSprite();
 			
-			//creates and sets the MediaElement (VideoElement) with a resource and path
-			var resource:URLResource = new URLResource( videoUrl );
-			playerSprite.media = new VideoElement( resource );
+			//creates and sets the MediaElement with a resource and path
+			var resource:URLResource = new URLResource( mediaUrl );
+			
+			var mediaElement:MediaElement;
+			switch(mediaType){
+				case "video":
+					mediaElement = new VideoElement( resource );
+					break;
+				case "audio":
+					mediaElement = new AudioElement( resource );
+					break;
+				case "image":
+					mediaElement = new ImageElement( resource );
+					break;
+			}
+			
+			playerSprite.media = mediaElement;
 			
 			return playerSprite;
 		}
@@ -435,38 +454,44 @@ package com.linto.dtengine.view.components{
 			// Text Holder
 		}
 		
-		private function showSuppportMedia(type:String):void{
+		private function showSuppportMedia(type:String, url:String):void{
 			// Make scrollPane visible
 			var supportMediaHolder:SupportMediaHolder = this.screenHolder.getChildByName("supportMediaHolder") as SupportMediaHolder;
-			switch(type){
-				case "text":
-					// Render the text content
-					
-					break;
-				case "image":
-					// Load Image
-					
-					break;
-				case "audio":
-					// Load audio file
-					
-					break;
-				case "video":
-					// Load video file
-					
-					supportMediaHolder.contentPane.source = this.attachAndPlayVideo(PROGRESSIVE_PATH);
-					
-					break;
+			
+			if(supportMediaHolder.visible){
+				return;
+			}
+			
+			if(type == "text"){
+				trace("Display text content");
+				supportMediaHolder.contentPane.source = new TextContent();
+			}else{
+				//supportMediaHolder.contentPane.addEventListener(Event.COMPLETE, completeHandler);
+				supportMediaHolder.contentPane.source = this.attachAndPlayMedia(type, url);
+				supportMediaHolder.contentPane.enabled = true;
+				supportMediaHolder.contentPane.verticalScrollPolicy = "auto";
+				scrollPaneInterval = setInterval(onScrollPaneLoaded, 100);
+				
 			}
 			
 			supportMediaHolder.visible = true;
 		}
 		
-		private function hideAllSupportMedia():void{
+		private function onScrollPaneLoaded():void {
+			clearInterval(scrollPaneInterval);
+			var supportMediaHolder:SupportMediaHolder = this.screenHolder.getChildByName("supportMediaHolder") as SupportMediaHolder;
+			supportMediaHolder.contentPane.update();
+			supportMediaHolder.contentPane.invalidate();
+			supportMediaHolder.contentPane.refreshPane();
+		}
+		
+		private function hideSupportMedia(evt:MouseEvent):void{
 			// Hide all media holders
 			
 			// Make scrollPane invisible
 			var supportMediaHolder:SupportMediaHolder = this.screenHolder.getChildByName("supportMediaHolder") as SupportMediaHolder;
+			supportMediaHolder.contentPane.source = null;
+			
 			supportMediaHolder.visible = false;
 		}
 		
@@ -482,7 +507,11 @@ package com.linto.dtengine.view.components{
 		
 		private function onSupportMediaClick(evt:MouseEvent):void{
 			trace("onSupportMediaClick");
-			this.showSuppportMedia("video");
+			//this.showSuppportMedia("video", "http://mediapm.edgesuite.net/strobe/content/test/AFaerysTale_sylviaApostol_640_500_short.flv");
+			//this.showSuppportMedia("image", "temp/Sleepless_Nights_by_Skybase.jpg");
+			this.showSuppportMedia("audio", "temp/Kehna_hi_kya.mp3");
+			//this.showSuppportMedia("text", "");
+			
 		}
 		
 		private function clearPreviousQuestion():void{
