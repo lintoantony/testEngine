@@ -12,6 +12,7 @@ package com.linto.dtengine.view.components{
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
 	import flash.events.*;
+	import flash.media.SoundMixer;
 	import flash.net.*;
 	import flash.text.TextFormat;
 	import flash.utils.*;
@@ -245,8 +246,6 @@ package com.linto.dtengine.view.components{
 			reportBugMc.buttonMode = true;
 			reportBugMc.addEventListener(MouseEvent.CLICK, onBugReport);
 			
-			this.renderQuestion();
-			
 			var supportMediaHolder:SupportMediaHolder = new SupportMediaHolder();
 			supportMediaHolder.name = "supportMediaHolder";
 			supportMediaHolder.x = 50;
@@ -254,7 +253,8 @@ package com.linto.dtengine.view.components{
 			supportMediaHolder.visible = false;
 			supportMediaHolder.closeButton.addEventListener(MouseEvent.CLICK, hideSupportMedia);
 			this.screenHolder.addChild(supportMediaHolder);
-
+			
+			this.renderQuestion();
 		}
 		
 		public function attachAndPlayMedia(mediaType:String, mediaUrl:String):MediaPlayerSprite{
@@ -427,6 +427,9 @@ package com.linto.dtengine.view.components{
 			// TO DO : Here comes the button for support media
 			var supportMediaButton:SupportMediaButton = this.screenHolder.getChildByName("supportMediaButton") as SupportMediaButton;
 			supportMediaButton.buttonMode = true;
+			supportMediaButton.supportType = this.dataXml.item[this.dataProxyRef.currentQuestionIndex].supportMedia.@type;
+			supportMediaButton.content = this.dataXml.item[this.dataProxyRef.currentQuestionIndex].supportMedia.text();
+			supportMediaButton.gotoAndStop(supportMediaButton.supportType);
 			supportMediaButton.addEventListener(MouseEvent.CLICK, onSupportMediaClick);
 			
 			var progressBar:ProgressBar = this.screenHolder.getChildByName("progressBar") as ProgressBar; 
@@ -491,6 +494,7 @@ package com.linto.dtengine.view.components{
 			// Make scrollPane invisible
 			var supportMediaHolder:SupportMediaHolder = this.screenHolder.getChildByName("supportMediaHolder") as SupportMediaHolder;
 			supportMediaHolder.contentPane.source = null;
+			SoundMixer.stopAll();
 			
 			supportMediaHolder.visible = false;
 		}
@@ -506,12 +510,7 @@ package com.linto.dtengine.view.components{
 		}
 		
 		private function onSupportMediaClick(evt:MouseEvent):void{
-			trace("onSupportMediaClick");
-			//this.showSuppportMedia("video", "http://mediapm.edgesuite.net/strobe/content/test/AFaerysTale_sylviaApostol_640_500_short.flv");
-			//this.showSuppportMedia("image", "temp/Sleepless_Nights_by_Skybase.jpg");
-			this.showSuppportMedia("audio", "temp/Kehna_hi_kya.mp3");
-			//this.showSuppportMedia("text", "");
-			
+			this.showSuppportMedia(evt.currentTarget.supportType, evt.currentTarget.content);
 		}
 		
 		private function clearPreviousQuestion():void{
@@ -604,6 +603,13 @@ package com.linto.dtengine.view.components{
 			optionsHolder.x = this.screenHolder.getChildByName("instrTxt").x;
 			optionsHolder.y = this.screenHolder.getChildByName("instrTxt").y + 25;
 			this.screenHolder.addChild(optionsHolder);
+			
+			var childIndex1:Number = this.screenHolder.getChildIndex(optionsHolder);
+			var supportMediaHolder:SupportMediaHolder = this.screenHolder.getChildByName("supportMediaHolder") as SupportMediaHolder;
+			var childIndex2:Number = this.screenHolder.getChildIndex(supportMediaHolder);
+			if(childIndex1 > childIndex2){
+				this.screenHolder.swapChildren(optionsHolder, supportMediaHolder);
+			}
 			
 			var numOfOptions:int = this.dataXml.item[questionIndex].choises.opt.length();
 			if(numOfOptions > MAX_OPTIONS){
