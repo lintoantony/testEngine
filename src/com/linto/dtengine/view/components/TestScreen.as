@@ -55,6 +55,8 @@ package com.linto.dtengine.view.components{
 		
 		private var scrollPaneInterval:uint;
 		
+		private var reviewBar:MovieClip;
+		
 		public function TestScreen( id:String, params:Array=null ) {
 			this.id = id;
 			this.timerUtil = new TimerUtil();
@@ -80,7 +82,7 @@ package com.linto.dtengine.view.components{
 			if(this.sfx == null){
 				this.sfx = SoundEffects.getInstance(this.screenHolder);
 				this.sfx.initMuteButton(this.screenHolder);
-				this.sfx.setMuteButPos(570, 8);
+				this.sfx.setMuteButPos(670, -60);
 			}
 			
 			this.dataXml = dataXml;
@@ -104,11 +106,13 @@ package com.linto.dtengine.view.components{
 		
 		private function attachElements():void{
 			// Progress Bar
+			/*
 			var progressBar:ProgressBar = new ProgressBar();
 			progressBar.name = "progressBar";
 			progressBar.x = 38;
 			progressBar.y = 2;
 			this.screenHolder.addChild(progressBar);
+			*/
 			
 			// Font increase decrese buttons
 			var fontButHolder:MovieClip = new MovieClip();
@@ -139,7 +143,7 @@ package com.linto.dtengine.view.components{
 			var questionHolder:QuestionHolder = new QuestionHolder();
 			questionHolder.name = "questionHolder";
 			questionHolder.x = -10;
-			questionHolder.y = progressBar.y + progressBar.height - 10;
+			questionHolder.y = 30;
 			this.screenHolder.addChild(questionHolder);
 			
 				
@@ -193,8 +197,8 @@ package com.linto.dtengine.view.components{
 			// Timer
 			var timerTxt:TimerTxt = new TimerTxt();
 			timerTxt.name = "timerTxt";
-			timerTxt.x = 625;
-			timerTxt.y = 0;
+			timerTxt.x = 775;
+			timerTxt.y = -65;
 			timerTxt.label.text = "00:00";
 			this.screenHolder.addChild(timerTxt);
 			this.timerUtil.startTimer(timerTxt.label);
@@ -210,8 +214,8 @@ package com.linto.dtengine.view.components{
 			
 			var supportMediaButton:SupportMediaButton = new SupportMediaButton();
 			supportMediaButton.name = "supportMediaButton";
-			supportMediaButton.x = 680;
-			supportMediaButton.y = 50;
+			supportMediaButton.x = 760;
+			supportMediaButton.y = 66;
 			this.screenHolder.addChild(supportMediaButton);
 
 			// Question Status
@@ -255,6 +259,10 @@ package com.linto.dtengine.view.components{
 			this.screenHolder.addChild(supportMediaHolder);
 			
 			this.renderQuestion();
+			
+			this.createReviewBar();
+			
+			this.populateReviewBar(this.dataProxyRef.reviewPageIndex);
 		}
 		
 		public function attachAndPlayMedia(mediaType:String, mediaUrl:String):MediaPlayerSprite{
@@ -432,11 +440,12 @@ package com.linto.dtengine.view.components{
 			supportMediaButton.gotoAndStop(supportMediaButton.supportType);
 			supportMediaButton.addEventListener(MouseEvent.CLICK, onSupportMediaClick);
 			
+			/*
 			var progressBar:ProgressBar = this.screenHolder.getChildByName("progressBar") as ProgressBar; 
-			//var per:Number = (this.dataProxyRef.currentQuestionIndex+1)/this.dataXml.item.length();
 			var per:Number = (this.dataProxyRef.currentQuestionIndex+1)/this.configProxyRef.userSelectedQCount;
 			progressBar.progressMaskMc.scaleX = per;	
 			progressBar.perTxt.text = Math.round(per*100)+"%";
+			*/
 			
 			this.updateNavButtonStates();
 			
@@ -779,6 +788,106 @@ package com.linto.dtengine.view.components{
 			this.screenHolder.removeChild(this.screenHolder.getChildByName("muteButton"));
 			this.sfx = null;
 			this.removeChild(this.getChildByName("screenHolder"));
+		}
+		
+		private function createReviewBar():void{
+			this.reviewBar = new MovieClip();
+			this.reviewBar.x = 60;
+			this.reviewBar.y = -10;
+			this.reviewBar.name = "reviewBar";
+			this.screenHolder.addChild(this.reviewBar);
+			
+			var reviewLabel:ReviewLabel = new ReviewLabel();
+			reviewLabel.label.text = this.configProxyRef.configDataXml.labelTexts.label.(@type=="review")[0].text();
+			this.reviewBar.addChild(reviewLabel);
+			
+			var prevPageBut:PrevPageBut = new PrevPageBut();
+			prevPageBut.x = 75;
+			prevPageBut.y = 10;
+			this.reviewBar.addChild(prevPageBut);
+			prevPageBut.buttonMode = true;
+			prevPageBut.addEventListener(MouseEvent.CLICK, onPrevPress, false, 0, true);
+			
+			var itemsHolder:MovieClip = new MovieClip();
+			itemsHolder.name = "itemsHolder";
+			itemsHolder.x = prevPageBut.x + prevPageBut.width + 15;
+			itemsHolder.y = 13;
+			this.reviewBar.addChild(itemsHolder);
+			var reviewItem:ReviewItem;
+			var xPos:Number = 0;
+			for(var i:int=0;i<10;i++){
+				reviewItem = new ReviewItem(); 
+				reviewItem.name = "reviewItem"+i;
+				reviewItem.x = xPos;
+				xPos = reviewItem.x + reviewItem.width + 3;
+				itemsHolder.addChild(reviewItem);
+			}
+			
+			var nextPageBut:NextPageBut = new NextPageBut();
+			nextPageBut.x = itemsHolder.x + itemsHolder.width + 15;
+			nextPageBut.y = 10;
+			this.reviewBar.addChild(nextPageBut);
+			nextPageBut.buttonMode = true;
+			nextPageBut.addEventListener(MouseEvent.CLICK, onNextPress, false, 0, true);
+			
+		}
+		
+		private function onPrevPress(evt:MouseEvent):void{
+			if(this.dataProxyRef.reviewPageIndex != 0){
+				this.dataProxyRef.reviewPageIndex--;
+				this.populateReviewBar(this.dataProxyRef.reviewPageIndex);
+			}
+		}
+		private function onNextPress(evt:MouseEvent):void{
+			
+			var totalPages:Number = Math.ceil(this.configProxyRef.userSelectedQCount/10);
+			if(this.dataProxyRef.reviewPageIndex != (totalPages - 1)){
+				this.dataProxyRef.reviewPageIndex++;
+				this.populateReviewBar(this.dataProxyRef.reviewPageIndex);
+			}
+		}
+		
+		private function populateReviewBar(pageIndx:int):void{
+			
+			var reviewItem:ReviewItem;
+			var answer:Boolean;
+			var itemsHolder:MovieClip = this.reviewBar.getChildByName("itemsHolder") as MovieClip;
+			var currIndx:int;
+			for(var i:int=0;i<10;i++){
+				currIndx = pageIndx*10+i;
+				reviewItem = itemsHolder.getChildByName("reviewItem"+i) as ReviewItem; 
+				reviewItem.index = currIndx;
+				if(currIndx < this.configProxyRef.userSelectedQCount){
+					reviewItem.label.text = reviewItem.index + 1;
+					reviewItem.label.mouseEnabled = false;
+					reviewItem.buttonMode = true;
+					/*
+					answer = this.dataProxyRef.getQResult(reviewItem.index);
+					if(answer == true){
+						reviewItem.revIcons.gotoAndStop(1);
+					}else{
+						reviewItem.revIcons.gotoAndStop(2);
+					}
+					*/
+					reviewItem.revIcons.gotoAndStop(3);
+					reviewItem.addEventListener(MouseEvent.CLICK, onRevItemClick, false, 0, true);
+					
+				}else{
+					reviewItem.label.text = "";
+					reviewItem.label.mouseEnabled = false;
+					reviewItem.buttonMode = false;
+					
+					reviewItem.revIcons.gotoAndStop(3);
+					
+					reviewItem.removeEventListener(MouseEvent.CLICK, onRevItemClick);
+					
+				}
+			}
+		}
+		private function onRevItemClick(evt:MouseEvent):void{
+			trace(evt.currentTarget.index);
+			this.clearPreviousQuestion();
+			this.attachOptions(evt.currentTarget.index);
 		}
 		
 	}
