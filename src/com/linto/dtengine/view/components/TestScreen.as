@@ -242,8 +242,8 @@ package com.linto.dtengine.view.components{
 			// Report Bug
 			var reportBugMc:ReportBugMc = new ReportBugMc();
 			reportBugMc.name = "reportBugMc";
-			reportBugMc.x = 670;
-			reportBugMc.y = 410;
+			reportBugMc.x = 820;
+			reportBugMc.y = 480;
 			reportBugMc.label.mouseEnabled = false;
 			reportBugMc.label.text = this.configProxyRef.configDataXml.labelTexts.label.(@type=="bug")[0].text();
 			this.screenHolder.addChild(reportBugMc);
@@ -252,16 +252,16 @@ package com.linto.dtengine.view.components{
 			
 			var supportMediaHolder:SupportMediaHolder = new SupportMediaHolder();
 			supportMediaHolder.name = "supportMediaHolder";
-			supportMediaHolder.x = 50;
-			supportMediaHolder.y = 120;
+			supportMediaHolder.x = 10;
+			supportMediaHolder.y = 0;
 			supportMediaHolder.visible = false;
 			supportMediaHolder.closeButton.addEventListener(MouseEvent.CLICK, hideSupportMedia);
 			this.screenHolder.addChild(supportMediaHolder);
 			
-			this.renderQuestion();
-			
 			this.createReviewBar();
 			
+			this.renderQuestion();
+
 			this.populateReviewBar(this.dataProxyRef.reviewPageIndex);
 		}
 		
@@ -482,8 +482,14 @@ package com.linto.dtengine.view.components{
 				supportMediaHolder.contentPane.source = this.attachAndPlayMedia(type, url);
 				supportMediaHolder.contentPane.enabled = true;
 				supportMediaHolder.contentPane.verticalScrollPolicy = "auto";
-				scrollPaneInterval = setInterval(onScrollPaneLoaded, 100);
-				
+			}
+			
+			var optionsHolder:MovieClip = this.screenHolder.getChildByName("optionsHolder") as MovieClip;
+			
+			var childIndex1:Number = this.screenHolder.getChildIndex(optionsHolder);
+			var childIndex2:Number = this.screenHolder.getChildIndex(supportMediaHolder);
+			if(childIndex1 > childIndex2){
+				this.screenHolder.swapChildren(optionsHolder, supportMediaHolder);
 			}
 			
 			supportMediaHolder.visible = true;
@@ -557,8 +563,8 @@ package com.linto.dtengine.view.components{
 		private function updateNavButtonStates():void{
 			var navButs:MovieClip = this.screenHolder.getChildByName("navButs") as MovieClip;
 			var xPos1:Number = 0;
-			var xPos2:Number = 140;
-			var xPos3:Number = 280;
+			var xPos2:Number = 290;
+			var xPos3:Number = 430;
 				
 			if(this.dataProxyRef.currentQuestionIndex == 0){
 				butStates(false, true, false);
@@ -612,13 +618,6 @@ package com.linto.dtengine.view.components{
 			optionsHolder.x = this.screenHolder.getChildByName("instrTxt").x;
 			optionsHolder.y = this.screenHolder.getChildByName("instrTxt").y + 25;
 			this.screenHolder.addChild(optionsHolder);
-			
-			var childIndex1:Number = this.screenHolder.getChildIndex(optionsHolder);
-			var supportMediaHolder:SupportMediaHolder = this.screenHolder.getChildByName("supportMediaHolder") as SupportMediaHolder;
-			var childIndex2:Number = this.screenHolder.getChildIndex(supportMediaHolder);
-			if(childIndex1 > childIndex2){
-				this.screenHolder.swapChildren(optionsHolder, supportMediaHolder);
-			}
 			
 			var numOfOptions:int = this.dataXml.item[questionIndex].choises.opt.length();
 			if(numOfOptions > MAX_OPTIONS){

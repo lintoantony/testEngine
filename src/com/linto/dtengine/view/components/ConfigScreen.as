@@ -17,7 +17,7 @@ package com.linto.dtengine.view.components{
 	
     public class ConfigScreen extends Sprite {
 		
-		public static const APP_WIDTH:int = 832;
+		public static const APP_WIDTH:int = 904;
 		public static const APP_HEIGHT:int = 622;
 
 		public static const ON_START_PRESS:String = "onStartPress";
@@ -162,7 +162,7 @@ package com.linto.dtengine.view.components{
 				
 			}
 			
-			optionsHolder.x = 760/2 - optionsHolder.width/2;
+			optionsHolder.x = APP_WIDTH/2 - optionsHolder.width/2;
 		}
 		
 		private function addButtonAndLabels():void{
@@ -189,7 +189,7 @@ package com.linto.dtengine.view.components{
 			//Terms & conditions
 			var termsMc:TermsMc = new TermsMc();
 			termsMc.name = "termsMc";
-			termsMc.x = 35;
+			termsMc.x = 125;
 			termsMc.y = 390;
 			termsMc.headline.text = this.configDataXml.terms.label.text();
 			termsMc.contents.text = "";
