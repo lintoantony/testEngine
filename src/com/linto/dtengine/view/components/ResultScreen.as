@@ -373,11 +373,6 @@ package com.linto.dtengine.view.components{
 			var instrTxt:InstrTxt = this.resultHolder.getChildByName("instrTxt") as InstrTxt;
 			instrTxt.visible = true;
 			
-			var imageBox:ImageBox = this.resultHolder.getChildByName("imageBox") as ImageBox;
-			imageBox.unloadThumbnail();
-			imageBox.loadThumbnail(this.dataProxyRef.xmlData.item[questionIndex].img);
-			imageBox.visible = true;
-			
 			var optionArr:Array = ["A", "B", "C", "D", "E"];
 			
 			var optionsHolder:MovieClip = new MovieClip();

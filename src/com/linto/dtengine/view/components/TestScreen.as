@@ -885,8 +885,9 @@ package com.linto.dtengine.view.components{
 		}
 		private function onRevItemClick(evt:MouseEvent):void{
 			trace(evt.currentTarget.index);
+			this.dataProxyRef.currentQuestionIndex = evt.currentTarget.index;
 			this.clearPreviousQuestion();
-			this.attachOptions(evt.currentTarget.index);
+			this.renderQuestion();
 		}
 		
 	}
