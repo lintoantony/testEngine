@@ -29,7 +29,7 @@ package com.linto.dtengine.view.components{
 		
 		public var playerSprite:MediaPlayerSprite;
 		
-		private static const MAX_OPTIONS:int = 4;
+		private static const MAX_OPTIONS:int = 5;
 		
 		public static const ON_PREV_PRESS:String = "onPrevPress";
 		public static const ON_NEXT_PRESS:String = "onNextPress";
@@ -199,7 +199,7 @@ package com.linto.dtengine.view.components{
 			timerTxt.name = "timerTxt";
 			timerTxt.x = 775;
 			timerTxt.y = -65;
-			timerTxt.label.text = "00:00";
+			timerTxt.label.text = "";
 			this.screenHolder.addChild(timerTxt);
 			this.timerUtil.startTimer(timerTxt.label);
 			

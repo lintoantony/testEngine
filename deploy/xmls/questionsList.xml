@@ -21,6 +21,9 @@
         <opt indx="1"><![CDATA[turn left ahead.]]></opt>
         <opt indx="2"><![CDATA[change to left lane]]></opt>
         <opt indx="3"><![CDATA[keep left.]]></opt>
+        <opt indx="4"><![CDATA[Fourth option comes here.]]></opt>
+        <opt indx="5"><![CDATA[Fifth option comes here.]]></opt>
+        <opt indx="6"><![CDATA[Sixth option comes here.]]></opt>
     </choises>
     <ansIndx>1</ansIndx>
     <remarks><![CDATA[Remarks text comes here]]></remarks>

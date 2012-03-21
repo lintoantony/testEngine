@@ -200,11 +200,13 @@ package com.linto.dtengine.model{
 				trace("::::::::::::::::::::: this.USER_ID = "+this.USER_ID);
 				this.apiUrl = this.configXml.serverApi.text();
 				this.graphDataUrl = this.configXml.graphApi.text();
+				this.timePerQuestion = this.configXml.timePerQuestion.text();
 				//trace("this.configXml = "+this.configXml);
 				this.sendNotification(ApplicationFacade.CONFIG_DATA_LOADED);
 			}else{
 				this.configXml = XML(unescape(event.target.data));
 				this.USER_ID = this.configXml.UserID.text();
+				this.timePerQuestion = this.configXml.timePerQuestion.text();
 				trace("::::::::::::::::::::: this.USER_ID = "+this.USER_ID);
 				trace("output from php ConfigProxy.onDataLoadComplete: this.configXml = " + this.configXml);
 				this.sendNotification(ApplicationFacade.CONFIG_DATA_LOADED);
