@@ -234,10 +234,19 @@ package com.linto.dtengine.view.components{
 			}
 			
 			// Explanation Txt
+			/*
 			var explanationTxt:ExplanationTxt = new ExplanationTxt();
 			explanationTxt.name = "explanationTxt";
-			explanationTxt.x = 50;
+			explanationTxt.x = 150;
 			this.screenHolder.addChild(explanationTxt);
+			*/
+			
+			// Remarks button
+			var remarksBut:RemarksBut = new RemarksBut();
+			remarksBut.name = "remarksBut";
+			remarksBut.x = 150;
+			this.screenHolder.addChild(remarksBut);
+			remarksBut.visible = false;
 			
 			// Report Bug
 			var reportBugMc:ReportBugMc = new ReportBugMc();
@@ -419,7 +428,8 @@ package com.linto.dtengine.view.components{
 			// Adjust button y positions based on number of options
 			var navButs:NavButs = this.screenHolder.getChildByName("navButs") as NavButs;
 			var optionsHolder:MovieClip = this.screenHolder.getChildByName("optionsHolder") as MovieClip;
-			navButs.y = optionsHolder.y + optionsHolder.height + 15;
+			//navButs.y = optionsHolder.y + optionsHolder.height + 15;
+			navButs.y = 485;
 			
 			var fontButHolder:MovieClip = this.screenHolder.getChildByName("fontButHolder") as MovieClip;
 			fontButHolder.y = navButs.y;
@@ -449,8 +459,17 @@ package com.linto.dtengine.view.components{
 			
 			this.updateNavButtonStates();
 			
+			/*
 			var explanationTxt:ExplanationTxt = this.screenHolder.getChildByName("explanationTxt") as ExplanationTxt;
 			explanationTxt.y = navButs.y + navButs.height + 5;
+			*/
+			var remarksBut:RemarksBut = this.screenHolder.getChildByName("remarksBut") as RemarksBut;
+			remarksBut.y = navButs.y;
+			remarksBut.buttonMode = true;
+			remarksBut.supportType = this.dataXml.item[this.dataProxyRef.currentQuestionIndex].remarks.@type;
+			remarksBut.content = this.dataXml.item[this.dataProxyRef.currentQuestionIndex].remarks.text();
+			remarksBut.addEventListener(MouseEvent.CLICK, onSupportMediaClick);
+
 
 		}
 		
@@ -529,8 +548,12 @@ package com.linto.dtengine.view.components{
 		}
 		
 		private function clearPreviousQuestion():void{
+			/*
 			var explanationTxt:ExplanationTxt = this.screenHolder.getChildByName("explanationTxt") as ExplanationTxt;
 			explanationTxt.label.text = "";
+			*/
+			var remarksBut:RemarksBut = this.screenHolder.getChildByName("remarksBut") as RemarksBut;
+			remarksBut.visible = false;
 			var optionsHolder:MovieClip = this.screenHolder.getChildByName("optionsHolder") as MovieClip;
 			if(optionsHolder != null){
 				this.screenHolder.removeChild(optionsHolder);
@@ -688,7 +711,8 @@ package com.linto.dtengine.view.components{
 		}
 		private function onOptClick(evt:MouseEvent):void{
 
-			var explanationTxt:ExplanationTxt = this.screenHolder.getChildByName("explanationTxt") as ExplanationTxt;
+			//var explanationTxt:ExplanationTxt = this.screenHolder.getChildByName("explanationTxt") as ExplanationTxt;
+			var remarksBut:RemarksBut = this.screenHolder.getChildByName("remarksBut") as RemarksBut;
 			
 			if(this.configProxyRef.testTypeModeIndx == 0){
 				
@@ -698,12 +722,14 @@ package com.linto.dtengine.view.components{
 				if(isCorrent == true){
 					this.sfx.playSound("CORRECT_VOICE");
 					evt.currentTarget.indicatorMc.gotoAndStop(2);
-					explanationTxt.label.text = "You got correct answer!";
+					//explanationTxt.label.text = "You got correct answer!";
+					remarksBut.visible = false;
 				}else{
 					this.sfx.playSound("WRONG_VOICE");
 					evt.currentTarget.indicatorMc.gotoAndStop(3);
 					this.showCorrectOpt();
-					explanationTxt.label.text = this.dataXml.item[this.dataProxyRef.currentQuestionIndex].remarks.text();
+					//explanationTxt.label.text = this.dataXml.item[this.dataProxyRef.currentQuestionIndex].remarks.text();
+					remarksBut.visible = true;
 				}
 				this.disableAll();
 			}else{
