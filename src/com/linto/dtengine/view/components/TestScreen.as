@@ -63,7 +63,8 @@ package com.linto.dtengine.view.components{
 		}
 		
 		private function onTimeEnds(evt:Event):void{
-			
+			this.timerUtil.stopTimer();
+			this.onFinish();
 		}
 		
 		public function setProxyRef(dataProxyRef:DataProxy, configProxyRef:ConfigProxy):void{

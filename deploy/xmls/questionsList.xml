@@ -11,7 +11,7 @@
         <opt indx="4"><![CDATA[pedestrians.]]></opt>
     </choises>
     <ansIndx>0</ansIndx>
-    <remarks><![CDATA[Remarks text comes here]]></remarks>
+    <remarks type="text"><![CDATA[text content comes here]]></remarks>
   </item>
   <item>
     <question><![CDATA[Seeing this sign means you have to :]]></question>

@@ -72,7 +72,7 @@
         </list>
     </terms>
     <logoUrl><![CDATA[images/logo.jpg]]></logoUrl>
-    <timePerQuestion><![CDATA[1]]></timePerQuestion>
+    <timePerQuestion><![CDATA[0.05]]></timePerQuestion>
     <serverApi><![CDATA[xmls/questionsList.xml]]></serverApi>
 	<graphApi><![CDATA[xmls/graph.xml]]></graphApi>
 </config>
