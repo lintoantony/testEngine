@@ -42,18 +42,18 @@ package com.linto.dtengine.view.components{
 			resultHolder.y = 50;
 			this.addChild(resultHolder);
 
-			if(this.configProxyRef.testTypeModeIndx == 0){
+			//if(this.configProxyRef.testTypeModeIndx == 0){
 				this.createReviewBar();
-			}
+			//}
 			
 			this.attachElements();
 			
 			this.createSummary();
 			this.showSummary(true);
 			
-			if(this.configProxyRef.testTypeModeIndx == 0){
+			//if(this.configProxyRef.testTypeModeIndx == 0){
 				this.populateReviewBar(this.dataProxyRef.reviewPageIndex);
-			}
+			//}
 		}
 		
 		private function createSummary():void{
@@ -67,7 +67,7 @@ package com.linto.dtengine.view.components{
 			summaryClip.name = "summaryClip";
 			summaryHolder.addChild(summaryClip);
 			
-			if(this.configProxyRef.testTypeModeIndx == 0){
+			//if(this.configProxyRef.testTypeModeIndx == 0){
 				this.summaryBut = new SummaryBut();
 				this.summaryBut.x = 60;
 				this.summaryBut.y = 445;
@@ -76,7 +76,7 @@ package com.linto.dtengine.view.components{
 				this.summaryBut.label.mouseEnabled = false;
 				this.summaryBut.label.text = this.configProxyRef.configDataXml.labelTexts.label.(@type=="summaryBut")[0].text();
 				this.enableSummaryBut(false);
-			}
+			//}
 			
 			var tryAgain:TryAgain = new TryAgain();
 			tryAgain.x = 200;
@@ -324,9 +324,9 @@ package com.linto.dtengine.view.components{
 		
 		private function onRevItemClick(evt:MouseEvent):void{
 			trace(evt.currentTarget.index);
-			if(this.configProxyRef.testTypeModeIndx == 0){
+			//if(this.configProxyRef.testTypeModeIndx == 0){
 				this.enableSummaryBut(true);
-			}
+			//}
 			this.showSummary(false);
 			this.clearPreviousQuestion();
 			this.attachOptions(evt.currentTarget.index);
@@ -382,8 +382,8 @@ package com.linto.dtengine.view.components{
 			this.resultHolder.addChild(optionsHolder);
 			
 			var numOfOptions:int = this.dataProxyRef.xmlData.item[questionIndex].choises.opt.length();
-			if(numOfOptions > 4){
-				numOfOptions = 4;
+			if(numOfOptions > 5){
+				numOfOptions = 5;
 			}
 			var thisOpt:AnswerItem;
 			var yVal:Number = 0;
