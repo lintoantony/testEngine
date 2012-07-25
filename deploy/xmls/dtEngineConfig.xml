@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="yes"?>
 <config>
-	<appHeading><![CDATA[Singapore Driving Theory Tests (BTT/FTT/RTT)]]></appHeading>
+	<appHeading><![CDATA[CCS Test Engine]]></appHeading>
     <userOptions>
         <option type="courseType">
             <label><![CDATA[Theory Test:]]></label>
@@ -13,8 +13,8 @@
         <option type="testMode">
             <label><![CDATA[Test Type/Mode:]]></label>
             <choices>
-                <item id="1"><![CDATA[Practice]]></item>
-                <item id="2"><![CDATA[Test (Simulated)]]></item>
+            	<item id="1"><![CDATA[Test (Simulated)]]></item>
+                <item id="2"><![CDATA[Practice]]></item>
             </choices>
         </option>
         <option type="noOfQuestions">
